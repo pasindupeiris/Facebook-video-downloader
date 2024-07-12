@@ -1,7 +1,6 @@
 import React from 'react'
 import Logo from '../asset/Images/rmlogo.png'
 import { BiCommentDetail } from "react-icons/bi";
-import { BiQuestionMark } from "react-icons/bi";
 
 
 const Navigation = () => {

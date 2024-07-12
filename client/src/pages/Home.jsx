@@ -21,7 +21,7 @@ const Home = () => {
 
 
     return (
-        <div className='flex items-center justify-center w-[100%] h-[80vh]'>
+        <div className='flex items-center justify-center w-[100%] h-[90vh]'>
 
             <div className="content-box">
 
@@ -49,7 +49,7 @@ const Home = () => {
                 </div>
 
                 <div className=" flex items-center justify-center justify-items-center p-2">
-                    <button className="flex items-center justify-center justify-items-center bg-[#181e2d] p-2 w-[auto] text-white font-semibold text-sm hover:bg-[#275eea] transition-colors rounded-sm">    How to use FSAVE.net <BiQuestionMark className=' text-xl font-bold' /> </button>
+                    <a href="#new" className="flex items-center justify-center justify-items-center bg-[#181e2d] p-2 w-[auto] text-white font-semibold text-sm hover:bg-[#275eea] transition-colors rounded-sm">    How to use FSAVE.net <BiQuestionMark className=' text-xl font-bold' /> </a>
                 </div>
 
             </div>
