@@ -12,7 +12,7 @@ const Home = () => {
 
         navigator.clipboard.readText().then(clipText => {
             inputRef.current.value = clipText;
-            console.log('Clipboard contents: ', inputRef);
+            console.log('Clipboard contents: ', inputRef.current.value);
         }).catch(err => {
             console.error('Failed to read clipboard contents: ', err);
         });
