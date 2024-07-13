@@ -4,7 +4,7 @@ import { BiQuestionMark } from "react-icons/bi";
 const Howto = () => {
     return (
 
-        <div id='new' className='w-[100%] h-[100vh] bg-slate-100 flex justify-center items-center justify-items-center'>
+        <div id='new' className='w-[100%] xl:h-[100vh] md:h-[90vh] sm:h-[90vh] xsm:h-[70vh] bg-slate-100 flex justify-center items-center justify-items-center'>
 
 
             <div className='w-[350px] h-[450px] rounded-md border border-[#181e2d] overflow-hidden'>
