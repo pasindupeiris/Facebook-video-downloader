@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Logo from '../asset/Images/logo.png';
 import { BiPaste } from "react-icons/bi";
 import { BiQuestionMark } from "react-icons/bi";
+import axios from 'axios';
+
 
 const Home = () => {
 
@@ -18,10 +20,42 @@ const Home = () => {
         });
     };
 
+    const [value, setValue] = useState({
+        urllink : null
+    })
+
+    const hadleChange = (e) => {
+
+        const {name, value} = e.target;
+
+       setValue((preValue) => ({
+        ...preValue,
+        [name] : value,
+       }))
+
+
+    }
+
+    const [videoInfo, setVideoInfo] = useState(null);
+
+    const handleSubmit = (e) => {  
+
+        e.preventDefault();
+
+
+        try {
+            const response = axios.get(`/getFbVideoInfo?url=${encodeURIComponent(value.urllink)}`);
+            setVideoInfo(response.data);
+          } catch (error) {
+            console.error('Error fetching video info:', error);
+          }
+        
+    }
+
 
 
     return (
-        <div className='p-2 flex items-center justify-center w-[100%] xl:h-[90vh] lg:h-[90vh] md:h-[80vh] sm:h-[80vh] xsm:h-[80vh] sm:mx-2 '>
+        <div className='p-2 flex items-center justify-center w-[100%] xl:h-[90vh] lg:h-[90vh] md:h-[80vh] sm:h-[80vh] xsm:h-[65vh] sm:mx-2 '>
 
             <div className="content-box xsm:w-[100%]">
 
@@ -36,15 +70,17 @@ const Home = () => {
 
                     <div className="rounded-md xl:p-5 md:p-2 xsm:p-1 sm:p-2 ">
 
-                        <div className="flex border-2 border-[#275eea] rounded-md">
+                        <form className="flex border-2 border-[#275eea] rounded-md " onSubmit={handleSubmit}>
 
-                            <input type="text"  ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" />
+                            <input type="text"  ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" name="urllink" value={value.urllink}
+                            onChange={hadleChange} />
+                            
                             <div className="flex w-10 items-center justify-center rounded-tl-md rounded-bl-md border-r border-[#9a9c9fbf] ">
                                 <BiPaste className=' text-xl text-slate-600' onClick={handlePaste} />
                             </div>
-                            <input type="button" value="Download" className="bg-[#275eea] p-2 w-[120px] text-white font-semibold hover:bg-blue-800 transition-colors" />
+                            <input type="submit" value="Download" className="bg-[#275eea] p-2 w-[120px] text-white font-semibold hover:bg-blue-800 transition-colors" />
 
-                        </div>
+                        </form>
                     </div>
 
                 </div>

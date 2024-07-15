@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../src/components/Navigation'
-import Home from './pages/Home';
 import Howto from './pages/Howto';
+import See from './pages/See';
 
 
 function App() {
@@ -10,8 +10,9 @@ function App() {
     <div className="App">
 
       <Nav />
-      {/* <Home />
-      <Howto/> */}
+      <See/>
+      <Howto/>
+      
     </div>
 
   );
