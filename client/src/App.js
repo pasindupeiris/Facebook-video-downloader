@@ -1,7 +1,9 @@
 import React from 'react';
-import Nav from '../src/components/Navigation'
-import Howto from './pages/Howto';
+
 import See from './pages/See';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Down from './pages/Down';
 
 
 function App() {
@@ -9,10 +11,14 @@ function App() {
   return (
     <div className="App">
 
-      <Nav />
-      <See/>
-      <Howto/>
-      
+      <Router>
+        <Routes>
+          <Route path="/" element={<See />} />
+          <Route path="/video" element={<Down />} />
+        </Routes>
+      </Router>
+
+
     </div>
 
   );
