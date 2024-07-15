@@ -16,7 +16,7 @@ const Home = () => {
             inputRef.current.value = clipText;
             console.log('Clipboard contents: ', inputRef.current.value);
         }).catch(err => {
-            console.error('Failed to read clipboard contents: ', err);
+            console.log('Failed to read clipboard contents: ');
         });
     };
 
@@ -42,13 +42,21 @@ const Home = () => {
 
         e.preventDefault();
 
+        const url = value.urllink; // Assuming 'value.urllink' is the URL you want to pass
 
-        try {
-            const response = axios.get(`/getFbVideoInfo?url=${encodeURIComponent(value.urllink)}`);
+        axios.get('http://localhost:5000/getFbVideoInfo', {
+            params: {
+                url: url // Pass the 'url' as a parameter
+            }
+        })
+        .then(response => {
             setVideoInfo(response.data);
-          } catch (error) {
-            console.error('Error fetching video info:', error);
-          }
+            alert('Video Downloaded Successfully');
+        })
+        .catch(error => {
+            console.error('Error downloading video:', error);
+        });
+        
         
     }
 

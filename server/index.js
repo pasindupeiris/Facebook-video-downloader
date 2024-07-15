@@ -5,12 +5,14 @@ const getFbVideoInfo = require('fb-downloader-scrapper');
 const app = express();
 
 app.get('/getFbVideoInfo', (req, res) => {
+
     const url = req.query.url;
+    console.log(url);
 
     getFbVideoInfo(url).then((result) => {
-            console.log(res.json(result));
+            console.log(result)
         }).catch((err) => {
-            console.log(err);
+            console.log("not found")
         })
 });
 
