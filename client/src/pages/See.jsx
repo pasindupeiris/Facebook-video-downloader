@@ -1,17 +1,16 @@
 import React from 'react'
 import Home from './Home';
-import Video from './Video';
+import Nav from '../components/Navigation'
+import Howto from '../pages/Howto';
 
 const See = () => {
 
   return (
 
     <div>
-
-<Home/>
-        <Video/>
-
-
+      <Nav />
+      <Home />
+      <Howto />
     </div>
   )
 }

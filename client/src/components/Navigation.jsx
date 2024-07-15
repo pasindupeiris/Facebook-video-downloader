@@ -15,7 +15,7 @@ const Navigation = () => {
 
   return (
 
-    <div className='w-[100%] h-[12vh] bg-[#275eea]'>
+    <div className='w-[100%] h-[15vh] bg-[#275eea]'>
 
       <nav className='w-[100%] relative h-[100%] flex items-center justify-between xl:px-14 md:px-14 sm:px-4 xsm:px-4'>
 
@@ -23,7 +23,7 @@ const Navigation = () => {
           <img src={Logo} alt="" width={150} />
         </div>
 
-        <div className="xl:hidden lg:hidden md:hidden sm:hidden xsm:bg-[#181e2d] p-[10.5px]  xsm:rounded-r-lg">
+        <div className="xl:hidden lg:hidden md:hidden sm:hidden xsm:bg-[#181e2d] p-[10px]  xsm:rounded-r-lg">
           <button onClick={hadleOpen} ><TbMenuDeep className=' text-3xl text-white'/></button>
         </div>
 

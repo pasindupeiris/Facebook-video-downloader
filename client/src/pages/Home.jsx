@@ -5,6 +5,7 @@ import { BiQuestionMark } from "react-icons/bi";
 import axios from 'axios';
 
 
+
 const Home = () => {
 
 
@@ -21,43 +22,47 @@ const Home = () => {
     };
 
     const [value, setValue] = useState({
-        urllink : null
+        urllink: null
     })
 
     const hadleChange = (e) => {
 
-        const {name, value} = e.target;
+        const { name, value } = e.target;
 
-       setValue((preValue) => ({
-        ...preValue,
-        [name] : value,
-       }))
+        setValue((preValue) => ({
+            ...preValue,
+            [name]: value,
+        }))
 
 
     }
 
-    const [videoInfo, setVideoInfo] = useState(null);
+    const [videoInfo, setVideoInfo] = useState('');
 
-    const handleSubmit = (e) => {  
+    const handleSubmit = (e) => {
 
         e.preventDefault();
 
         const url = value.urllink; // Assuming 'value.urllink' is the URL you want to pass
 
-        axios.get('http://localhost:5000/getFbVideoInfo', {
+        axios.get('http://localhost:8090/getFbVideoInfo', {
             params: {
                 url: url // Pass the 'url' as a parameter
             }
-        })
-        .then(response => {
+        }).then(response => {
             setVideoInfo(response.data);
-            alert('Video Downloaded Successfully');
-        })
-        .catch(error => {
-            console.error('Error downloading video:', error);
-        });
-        
-        
+            console.log('Video Info:', videoInfo);
+            localStorage.setItem('sd', videoInfo.sd);
+            localStorage.setItem('hd', videoInfo.hd);
+            localStorage.setItem('title', videoInfo.title);
+            localStorage.setItem('thumbnail', videoInfo.thumbnail);
+            localStorage.setItem('time', videoInfo.duration_ms);
+            window.location.href = '/video';
+        }).catch(error => {
+                console.error('Error downloading video:', error);
+            });
+
+
     }
 
 
@@ -80,9 +85,9 @@ const Home = () => {
 
                         <form className="flex border-2 border-[#275eea] rounded-md " onSubmit={handleSubmit}>
 
-                            <input type="text"  ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" name="urllink" value={value.urllink}
-                            onChange={hadleChange} />
-                            
+                            <input type="text" ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" name="urllink" value={value.urllink}
+                                onChange={hadleChange} />
+
                             <div className="flex w-10 items-center justify-center rounded-tl-md rounded-bl-md border-r border-[#9a9c9fbf] ">
                                 <BiPaste className=' text-xl text-slate-600' onClick={handlePaste} />
                             </div>
