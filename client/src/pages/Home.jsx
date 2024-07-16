@@ -3,6 +3,9 @@ import Logo from '../asset/Images/logo.png';
 import { BiPaste } from "react-icons/bi";
 import { BiQuestionMark } from "react-icons/bi";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../index.css';
 
 
 
@@ -43,6 +46,18 @@ const Home = () => {
 
         e.preventDefault();
 
+        toast.warning('Just Wait ', {
+            position: "top-center",
+            autoClose:7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            className: 'foo-bar'
+        });
+
         const url = value.urllink; // Assuming 'value.urllink' is the URL you want to pass
 
         axios.get('http://localhost:8090/getFbVideoInfo', {
@@ -52,7 +67,17 @@ const Home = () => {
         }).then(response => {
 
             if (response.data === 'Error') {
-                alert('Invalid URL');
+                toast.error('Some Error ⛔', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    className: 'foo-bar'
+                });
             } else {
                 setVideoInfo(response.data);
                 console.log('Video Info:', videoInfo);
@@ -62,7 +87,23 @@ const Home = () => {
                 sessionStorage.setItem('thumbnail', response.data.thumbnail);
                 sessionStorage.setItem('time', response.data.duration_ms);
 
-                window.location.href = '/video';
+                toast.success('Successfully  🚀', {
+                    position: "top-center",
+                    autoClose:5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    className: 'foo-bar'
+                });
+
+                setTimeout(function() {
+                    window.location.href = '/video';
+                }, 2000); 
+                
+
             }
 
 
@@ -93,7 +134,7 @@ const Home = () => {
 
                         <form className="flex border-2 border-[#275eea] rounded-md " onSubmit={handleSubmit}>
 
-                            <input type="text" ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" name="urllink" value={value.urllink}
+                            <input type="url" ref={inputRef} className="xl:w-[500px] md:w-[100%] xsm:w-[100%] sm:w-[100%]  border-[#275eea] rounded-md  bg-white p-4 text-base  outline-0  " placeholder="Enter Video Link Here..." id="" name="urllink" value={value.urllink}
                                 onChange={hadleChange} />
 
                             <div className="flex w-10 items-center justify-center rounded-tl-md rounded-bl-md border-r border-[#9a9c9fbf] ">
@@ -111,6 +152,19 @@ const Home = () => {
                 </div>
 
             </div>
+
+            <ToastContainer id="dropten" className="sm:mt-12 xsm:mt-12"
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
 
 
         </div>

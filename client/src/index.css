@@ -49,3 +49,11 @@ body {
     font-optical-sizing: auto;
    
 }
+
+@media(max-width: 768px){
+  .foo-bar{
+    border-radius: 6px !important;
+    padding: 10px !important;
+    margin: 150px 10px !important;
+  }
+}

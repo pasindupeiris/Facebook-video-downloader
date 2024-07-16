@@ -30,7 +30,7 @@ const Navigation = () => {
         <div className="menu p-1">
 
           <ul className={isOpen}>
-            <li className=' xsm:p-2 flex items-center justify-center  bg-[#181e2d] p-2 w-[auto] text-white font-semibold text-sm hover:bg-[#275eea] transition-colors rounded-sm'><a href="/">About Us</a> </li>
+            <li className=' xsm:p-2 flex items-center justify-center  bg-[#181e2d] p-2 w-[auto] text-white font-semibold text-sm hover:bg-[#275eea] transition-colors rounded-sm'><a href="/video">About Us</a> </li>
             <li className=' xsm:p-2 flex items-center justify-center bg-[#181e2d] p-2 w-[auto] text-white font-semibold text-sm hover:bg-[#275eea] transition-colors rounded-sm'>Contact Us <BiCommentDetail className=' mx-2 text-xl' /></li>
           </ul>
 
