@@ -52,15 +52,18 @@ const Home = () => {
         }).then(response => {
             setVideoInfo(response.data);
             console.log('Video Info:', videoInfo);
-            localStorage.setItem('sd', videoInfo.sd);
-            localStorage.setItem('hd', videoInfo.hd);
-            localStorage.setItem('title', videoInfo.title);
-            localStorage.setItem('thumbnail', videoInfo.thumbnail);
-            localStorage.setItem('time', videoInfo.duration_ms);
-            window.location.href = '/video';
+            sessionStorage.setItem('sd', response.data.sd);
+            sessionStorage.setItem('hd', response.data.hd);
+            sessionStorage.setItem('title', response.data.title);
+            sessionStorage.setItem('thumbnail', response.data.thumbnail);
+            sessionStorage.setItem('time', response.data.duration_ms);
+
+         window.location.href = '/video';
+
+          
         }).catch(error => {
-                console.error('Error downloading video:', error);
-            });
+            console.error('Error downloading video:', error);
+        });
 
 
     }

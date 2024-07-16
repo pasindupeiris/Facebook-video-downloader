@@ -13,8 +13,8 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/" element={<See />} />
-          <Route path="/video" element={<Down />} />
+          <Route path="/" element={<See/>} />
+          <Route path="/video" element={<Down/>} />
         </Routes>
       </Router>
 
