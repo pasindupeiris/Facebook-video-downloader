@@ -20,7 +20,7 @@ const Navigation = () => {
       <nav className='w-[100%] relative h-[100%] flex items-center justify-between xl:px-14 md:px-14 sm:px-4 xsm:px-4'>
 
         <div className="xsm:w-[100%] bg-[#181e2d] lg:rounded-md xl:rounded-sm sm:rounded-sm md:rounded-sm px-2 xsm:rounded-l-md">
-          <img src={Logo} alt="" width={150} className='p-[6px]' />
+          <img src={Logo} alt="" width={150} className='p-[7px]' />
         </div>
 
         <div className="xl:hidden lg:hidden md:hidden sm:hidden xsm:bg-[#181e2d] p-[10px]  xsm:rounded-r-md">

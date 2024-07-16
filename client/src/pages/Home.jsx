@@ -50,17 +50,22 @@ const Home = () => {
                 url: url // Pass the 'url' as a parameter
             }
         }).then(response => {
-            setVideoInfo(response.data);
-            console.log('Video Info:', videoInfo);
-            sessionStorage.setItem('sd', response.data.sd);
-            sessionStorage.setItem('hd', response.data.hd);
-            sessionStorage.setItem('title', response.data.title);
-            sessionStorage.setItem('thumbnail', response.data.thumbnail);
-            sessionStorage.setItem('time', response.data.duration_ms);
 
-         window.location.href = '/video';
+            if (response.data === 'Error') {
+                alert('Invalid URL');
+            } else {
+                setVideoInfo(response.data);
+                console.log('Video Info:', videoInfo);
+                sessionStorage.setItem('sd', response.data.sd);
+                sessionStorage.setItem('hd', response.data.hd);
+                sessionStorage.setItem('title', response.data.title);
+                sessionStorage.setItem('thumbnail', response.data.thumbnail);
+                sessionStorage.setItem('time', response.data.duration_ms);
 
-          
+                window.location.href = '/video';
+            }
+
+
         }).catch(error => {
             console.error('Error downloading video:', error);
         });
