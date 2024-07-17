@@ -3,8 +3,6 @@ const express = require('express');
 const getFbVideoInfo = require('fb-downloader-scrapper');
 const cors = require('cors');
 
-
-
 const app = express();
 
 app.use(cors());
